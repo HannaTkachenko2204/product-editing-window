@@ -9,15 +9,15 @@ import photoDevice from "../assets/images/device.png";
 import photoDataPlate from "../assets/images/plate.png";
 
 export function ProductEditingWindow(): HTMLElement {
-    const modal = document.createElement("div");
-    modal.className = "modal";
-  
-    modal.appendChild(createHeader());
-    modal.appendChild(createBody());
-    modal.appendChild(createFooter());
-  
-    return modal;
-  }
+  const modal = document.createElement("div");
+  modal.className = "modal";
+
+  modal.appendChild(createHeader());
+  modal.appendChild(createBody());
+  modal.appendChild(createFooter());
+
+  return modal;
+}
 
 function createHeader(): HTMLElement {
   const header = document.createElement("header");
@@ -26,15 +26,15 @@ function createHeader(): HTMLElement {
     <h2 class="modal__title">G112082</h2>
     <div class="modal__header-controls">
       <button class="modal__header-btn" type="button">
-        <img src="${editIcon}" alt="Edit" />Edit
+        <img class="modal__header-icon" src="${editIcon}" alt="Edit" />Edit
       </button>
       <div class="modal__header-controls-divider"></div>
       <div>
-        <img src="${backArrowIcon}" alt="Back Arrow" />
-        <img src="${forwardArrowIcon}" alt="Forward Arrow" />
+        <img class="modal__header-icon" src="${backArrowIcon}" alt="Back Arrow" />
+        <img class="modal__header-icon" src="${forwardArrowIcon}" alt="Forward Arrow" />
       </div>
-      <img src="${maximizeIcon}" alt="Maximize" />
-      <img src="${closeIcon}" alt="Close" />
+      <img class="modal__header-icon" src="${maximizeIcon}" alt="Maximize" />
+      <img class="modal__header-icon" src="${closeIcon}" alt="Close" />
     </div>
     `;
   return header;
@@ -45,18 +45,20 @@ function createBody(): HTMLElement {
   body.className = "modal__body";
   body.appendChild(createProductFormSection());
   body.appendChild(createListLocationTableSection());
+  body.appendChild(createListEbayTableSection());
+  body.appendChild(createSameProductsTableSection());
   return body;
 }
 
 function createFooter(): HTMLElement {
-    const footer = document.createElement("footer");
-    footer.className = "modal__footer";
-    footer.innerHTML = `
+  const footer = document.createElement("footer");
+  footer.className = "modal__footer";
+  footer.innerHTML = `
         <button class="modal__footer-btn--primary" type="button">Expand</button>
         <button class="modal__footer-btn--secondary" type="submit">Add</button>
       `;
-    return footer;
-  }
+  return footer;
+}
 
 function createProductFormSection(): HTMLElement {
   const section = document.createElement("section");
@@ -67,7 +69,7 @@ function createProductFormSection(): HTMLElement {
         <span class="product-form__label">Brand</span>
         <div class="product-form__value-box">
           <span class="product-form__value">NEC</span>
-          <img src="${moreIcon}" alt="More" />
+          <img class="product-form__icon" src="${moreIcon}" alt="More options" />
         </div>
       </div>
       <div class="product-form__field product-form__field--text-only">
@@ -110,7 +112,7 @@ function createProductFormSection(): HTMLElement {
         <span class="product-form__label">Photo_device</span>
         <div class="product-form__value-box">
           <span class="product-form__value">https://drive.google.com...</span>
-          <img src="${openLinkIcon}" alt="Open link" />
+          <img class="product-form__icon" src="${openLinkIcon}" alt="Open link" />
         </div>
       </div>
     </div>
@@ -122,28 +124,28 @@ function createProductFormSection(): HTMLElement {
         <span class="product-form__label">Sku</span>
         <div class="product-form__value-box">
           <span class="product-form__value">???/P,Ne_P401W/??G112082</span>
-          <img src="${moreIcon}" alt="More" />
+          <img class="product-form__icon" src="${moreIcon}" alt=" options" />
         </div>
       </div>
       <div class="product-form__field">
         <span class="product-form__label">L-user</span>
         <div class="product-form__value-box">
           <span class="product-form__value">Iryna</span>
-          <img src="${moreIcon}" alt="More" />
+          <img class="product-form__icon" src="${moreIcon}" alt="More options" />
         </div>
       </div>
       <div class="product-form__field">
         <span class="product-form__label">Category</span>
         <div class="product-form__value-box">
           <span class="product-form__value">Projector</span>
-          <img src="${moreIcon}" alt="More" />
+          <img class="product-form__icon" src="${moreIcon}" alt="More options" />
         </div>
       </div>
       <div class="product-form__field">
         <span class="product-form__label">e-user</span>
         <div class="product-form__value-box">
           <span class="product-form__value">Script</span>
-          <img src="${moreIcon}" alt="More" />
+          <img class="product-form__icon" src="${moreIcon}" alt="More options" />
         </div>
       </div>
       <div class="product-form__field product-form__field--text-only">
@@ -162,7 +164,7 @@ function createProductFormSection(): HTMLElement {
         <span class="product-form__label">amazon listing src</span>
         <div class="product-form__value-box">
           <span class="product-form__value">https://www.amazon.com...</span>
-          <img src="${openLinkIcon}" alt="Open link" />
+          <img class="product-form__icon" src="${openLinkIcon}" alt="Open link" />
         </div>
       </div>
       <div class="product-form__field product-form__field--text-only">
@@ -206,21 +208,174 @@ function createProductFormSection(): HTMLElement {
 
 function createListLocationTableSection(): HTMLElement {
   const section = document.createElement("section");
-  section.className = "list-location-table__section";
-  //   section.innerHTML = `
-  //       <h3>List Location</h3>
-  //       <table class="product-table">
-  //         <thead>
-  //           <tr>
-  //             <th>ID</th><th>Brand</th><th>Category</th><th>Device P/N</th><th>Qty</th><th>Condition</th><th>Edit User</th><th>Notes</th>
-  //           </tr>
-  //         </thead>
-  //         <tbody>
-  //           <tr>
-  //             <td>G112082</td><td>NEC</td><td>Projectors</td><td>CP34B</td><td>52</td><td>U/Ref</td><td>Script</td><td>No Lamp</td>
-  //           </tr>
-  //         </tbody>
-  //       </table>
-  //     `;
+  section.className = "list-table";
+  section.innerHTML = `
+  <div class="list-table__header">
+    <h3 class="list-table__title">List Location</h3>
+    <span class="list-table__badge">6</span>
+  </div>
+
+  <table class="list-table__table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Category</th>
+        <th>Device P/N</th>
+        <th>Gty</th>
+        <th>Condition</th>
+        <th>Edit User</th>
+        <th>Notes</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>G112082</td>
+        <td>NEC</td>
+        <td>Projectors</td>
+        <td>CP34B</td>
+        <td>52</td>
+        <td>U/Ref</td>
+        <td>Script</td>
+        <td>No Lamp</td>
+        <td><img class="list-table__icon" src="${moreIcon}" alt="More options" /></td>
+      </tr>
+      <tr>
+        <td>G112082</td>
+        <td>NEC</td>
+        <td>Projectors</td>
+        <td>CP34B</td>
+        <td>52</td>
+        <td>U/Ref</td>
+        <td>Script</td>
+        <td>No Lamp</td>
+        <td><img class="list-table__icon" src="${moreIcon}" alt="More options" /></td>
+      </tr>
+      <tr>
+        <td>G112082</td>
+        <td>NEC</td>
+        <td>Projectors</td>
+        <td>CP34B</td>
+        <td>52</td>
+        <td>U/Ref</td>
+        <td>Script</td>
+        <td>No Lamp</td>
+        <td><img class="list-table__icon" src="${moreIcon}" alt="More options" /></td>
+      </tr>
+      <tr>
+        <td>G112082</td>
+        <td>NEC</td>
+        <td>Projectors</td>
+        <td>CP34B</td>
+        <td>52</td>
+        <td>U/Ref</td>
+        <td>Script</td>
+        <td>No Lamp</td>
+        <td><img class="list-table__icon" src="${moreIcon}" alt="More options" /></td>
+      </tr>
+    </tbody>
+  </table>
+      `;
+  return section;
+}
+
+function createListEbayTableSection(): HTMLElement {
+  const section = document.createElement("section");
+  section.className = "list-table";
+  section.innerHTML = `
+  <div class="list-table__header">
+    <h3 class="list-table__title">list ebay vision listings</h3>
+    <span class="list-table__badge">53</span>
+  </div>
+
+  <table class="list-table__table">
+    <thead>
+      <tr>
+        <th>Listing_id</th>
+        <th>SKU</th>
+        <th>condition_id</th>
+        <th>product_id</th>
+        <th>title</th>
+        <th>price</th>
+        <th>listing_qty</th>
+        <th class="list-table__cell">inventory_q</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>325064386872</td>
+        <td>SRQ/P,Ne_ME331X...</td>
+        <td>UEG122535</td>
+        <td>G122535</td>
+        <td>3300 ANSI 3LCD Projector 1080p...</td>
+        <td>114,27</td>
+        <td>274</td>
+        <td>3 376</td>
+      </tr>
+      <tr>
+        <td>325064386872</td>
+        <td>SRQ/P,Ne_ME331X...</td>
+        <td>UEG122535</td>
+        <td>G122535</td>
+        <td>3300 ANSI 3LCD Projector 1080p...</td>
+        <td>114,27</td>
+        <td>274</td>
+        <td>3 376</td>
+      </tr>
+      <tr>
+        <td>325064386872</td>
+        <td>SRQ/P,Ne_ME331X...</td>
+        <td>UEG122535</td>
+        <td>G122535</td>
+        <td>3300 ANSI 3LCD Projector 1080p...</td>
+        <td>114,27</td>
+        <td>274</td>
+        <td>3 376</td>
+      </tr>
+      <tr>
+        <td>325064386872</td>
+        <td>SRQ/P,Ne_ME331X...</td>
+        <td>UEG122535</td>
+        <td>G122535</td>
+        <td>3300 ANSI 3LCD Projector 1080p...</td>
+        <td>114,27</td>
+        <td>274</td>
+        <td>3 376</td>
+      </tr>
+    </tbody>
+  </table>
+      `;
+  return section;
+}
+
+function createSameProductsTableSection(): HTMLElement {
+  const section = document.createElement("section");
+  section.className = "list-table__last";
+  section.innerHTML = `
+  <div class="list-table__header">
+    <h3 class="list-table__title">Same Products</h3>
+    <span class="list-table__badge">1</span>
+  </div>
+
+  <table class="list-table__table">
+    <thead>
+      <tr>
+        <th>Original_id</th>
+        <th>same_id</th>
+        <th>fk_edit_employee</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>G112082</td>
+        <td>G900559</td>
+        <td>Script</td>
+        <td><img class="list-table__icon" src="${moreIcon}" alt="More options" /></td>
+      </tr>
+    </tbody>
+  </table>
+      `;
   return section;
 }
