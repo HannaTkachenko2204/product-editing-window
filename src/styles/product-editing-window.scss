@@ -269,7 +269,7 @@
             padding-left: 30px;
           }
 
-          &:last-child {
+          &:last-child:not(.list-table__start) {
             text-align: end;
             padding-right: 30px;
           }

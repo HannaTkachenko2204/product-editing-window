@@ -331,7 +331,7 @@ function createListEbayTableSection(): HTMLElement {
         <td>3300 ANSI 3LCD Projector 1080p...</td>
         <td>114,27</td>
         <td>274</td>
-        <td>3 376</td>
+        <td class="list-table__start">3 376</td>
       </tr>
       <tr>
         <td>325064386872</td>
@@ -341,7 +341,7 @@ function createListEbayTableSection(): HTMLElement {
         <td>3300 ANSI 3LCD Projector 1080p...</td>
         <td>114,27</td>
         <td>274</td>
-        <td>3 376</td>
+        <td class="list-table__start">3 376</td>
       </tr>
       <tr>
         <td>325064386872</td>
@@ -351,7 +351,7 @@ function createListEbayTableSection(): HTMLElement {
         <td>3300 ANSI 3LCD Projector 1080p...</td>
         <td>114,27</td>
         <td>274</td>
-        <td>3 376</td>
+        <td class="list-table__start">3 376</td>
       </tr>
       <tr>
         <td>325064386872</td>
@@ -361,7 +361,7 @@ function createListEbayTableSection(): HTMLElement {
         <td>3300 ANSI 3LCD Projector 1080p...</td>
         <td>114,27</td>
         <td>274</td>
-        <td>3 376</td>
+        <td class="list-table__start">3 376</td>
       </tr>
     </tbody>
   </table>
