@@ -216,6 +216,16 @@ function createListLocationTableSection(): HTMLElement {
   </div>
 
   <table class="list-table__table">
+  <colgroup>
+      <col style="width: 135px;">
+      <col style="width: 163px;">
+      <col style="width: 172px;">
+      <col style="width: 172px;">
+      <col style="width: 97px;">
+      <col style="width: 173px;">
+      <col style="width: 156px;">
+      <col>
+  </colgroup>
     <thead>
       <tr>
         <th>ID</th>
@@ -290,6 +300,16 @@ function createListEbayTableSection(): HTMLElement {
   </div>
 
   <table class="list-table__table">
+  <colgroup>
+      <col style="width: 193px;">
+      <col style="width: 228px;">
+      <col style="width: 173px;">
+      <col style="width: 155px;">
+      <col style="width: 354px;">
+      <col style="width: 94px;">
+      <col style="width: 156px;">
+      <col>
+  </colgroup>
     <thead>
       <tr>
         <th>Listing_id</th>
@@ -359,6 +379,12 @@ function createSameProductsTableSection(): HTMLElement {
   </div>
 
   <table class="list-table__table">
+  <colgroup>
+      <col style="width: 169px;">
+      <col style="width: 140px;">
+      <col>
+      <col>
+  </colgroup>
     <thead>
       <tr>
         <th>Original_id</th>
